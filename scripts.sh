@@ -55,3 +55,23 @@ then
 else
   echo "Wrong input , enter value greater than 4 and less than 20"
 fi
+#OS Determine
+# Determine the operating system that is running the script
+# - mainly care whether Cygwin
+checkOperatingSystem()
+{
+    operatingSystem="unknown"
+    os=`uname | tr [a-z] [A-Z]`
+    case "${os}" in
+        CYGWIN*)
+            operatingSystem="cygwin"
+            ;;
+        LINUX*)
+            operatingSystem="linux"
+            ;;
+        MINGW*)
+            operatingSystem="mingw"
+            ;;
+    esac
+    echo "operatingSystem=$operatingSystem (used to check for Cygwin and filemode compatibility)"
+}
